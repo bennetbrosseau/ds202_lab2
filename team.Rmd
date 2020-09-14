@@ -1,0 +1,143 @@
+---
+title: "team"
+output: html_document
+---
+
+## Individual1 
+## Reading in the data
+```{r}
+choco <- read.csv("https://raw.githubusercontent.com/xdaiISU/ds202materials/master/hwlabs/data/choco.csv") 
+str(choco)
+```
+
+## Question 1
+```{r}
+# The Histogram
+hist(choco$Rating)
+# This is a fairly normal distribution that is uni-modal that seems tp have some outliars around the rating of 1.
+# The Boxplot
+boxplot(choco$Rating)
+# This boxplot is clearly showing some outliars within the ratings. They are between a rating of 1 and 2.
+```
+
+
+
+
+## Question 2
+```{r}
+barplot(table(choco$Date))
+# The more recent the year is it seems to have more ratings
+```
+
+
+
+
+## Question 3
+```{r}
+#Graphical Summary
+plot(choco$Rating, choco$Cocoa_Percent)
+
+#Numerical Summary
+fourchoco <- choco$Cocoa_Percent[choco$Rating == '4']
+threechoco <- choco$Cocoa_Percent[choco$Rating == '3']
+twochoco <- choco$Cocoa_Percent[choco$Rating == '2']
+onechoco <- choco$Cocoa_Percent[choco$Rating == '1']
+mean(fourchoco)
+mean(threechoco)
+mean(twochoco)
+mean(onechoco)
+
+# The higher the cocoa percentage the lower the rating.
+```
+
+
+
+## Question 4
+
+```{r}
+
+#Numerical Summary
+
+#characteristics1
+rich <- choco$Rating[choco$Characteristics1 == 'rich']
+sweet <- choco$Rating[choco$Characteristics1 == 'sweet']
+creamy <- choco$Rating[choco$Characteristics1 == 'creamy']
+earthy <- choco$Rating[choco$Characteristics1 == 'earthy']
+fatty <- choco$Rating[choco$Characteristics1 == 'fatty']
+dry <- choco$Rating[choco$Characteristics1 == 'dry']
+
+#avg for characteristics1
+avgRich1 <- mean(rich)
+avgSweet1 <- mean(sweet)
+avgCreamy1 <- mean(creamy)
+avgEarthy1 <- mean(earthy)
+avgFatty1 <- mean(fatty)
+avgDry1 <- mean(dry)
+
+
+avgRich1
+avgSweet1
+avgCreamy1
+avgEarthy1
+avgFatty1
+avgDry1
+
+#Graphical Summary showing avg rating for select characteristics
+averages <- c(avgRich1, avgSweet1, avgCreamy1, avgEarthy1, avgFatty1, avgDry1)
+names(averages) <- c('Rich', 'Sweet', 'Creamy', 'Earthy', 'Fatty', 'Dry')
+barplot(averages)
+
+# Creamy and Rich seem to be the most favorable while sweet, earthy, fatty, and dry seem to be less favorable.
+```
+
+
+
+
+## Question 5 - My analysis on the relation of location and rating
+
+```{r}
+france <- choco$Rating[choco$Location == 'France']
+usa <- choco$Rating[choco$Location == 'U.S.A.']
+brazil <- choco$Rating[choco$Location == 'Brazil']
+denmark <- choco$Rating[choco$Location == 'Denmark']
+ecuador <- choco$Rating[choco$Location == 'Ecuador']
+australia <- choco$Rating[choco$Location == 'Australia']
+germany <- choco$Rating[choco$Location == 'Germany']
+peru <- choco$Rating[choco$Location == 'Peru']
+argentina <- choco$Rating[choco$Location == 'Argentina']
+italy <- choco$Rating[choco$Location == 'Italy']
+
+avgfrance <- mean(france)
+avgusa <- mean(usa)
+avgbrazil <- mean(brazil)
+avgdenmark <- mean(denmark)
+avgecuador <- mean(ecuador)
+avgaustralia <- mean(australia)
+avggermany <- mean(germany)
+avgperu <- mean(peru)
+avgargentina <- mean(argentina)
+avgitaly <- mean(italy)
+
+avgfrance
+avgusa
+avgbrazil 
+avgdenmark 
+avgecuador 
+avgaustralia
+avggermany 
+avgperu 
+avgargentina 
+avgitaly 
+
+
+avgloc <- c(avgfrance, avgusa, avgbrazil, avgdenmark, avgecuador,avgaustralia,
+            avggermany, avgperu, avgargentina, avgitaly)
+names(avgloc) <- c('France', 'USA', 'Brazil', 'Denmark', 'Ecuador', 'Australia',
+                   'Germany', 'Peru', 'Argentina', 'Italy')
+barplot(avgloc, xlab = 'country', ylab = 'rating')
+
+
+
+#Australia, Denmark, and Argentina had the highest avg rating of the selected countries. Ecuador and Peru had the lowest ratings of the selected countries.
+
+```
