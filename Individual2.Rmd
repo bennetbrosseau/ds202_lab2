@@ -1,0 +1,96 @@
+---
+title: "JuliaHernesman"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+
+
+choco <- read.csv("https://raw.githubusercontent.com/xdaiISU/ds202materials/master/hwlabs/data/choco.csv") 
+str(choco)
+
+#1
+hist(choco$Rating)
+boxplot(choco$Rating,data=choco)
+#There are 4 outliers on the low end of the box plot and histogram. The median is around 3.
+
+#2
+#This barplot shows the amount of obervations in each year. The difference in height is the difference in number of obervations.
+barplot(table(choco$Date))
+
+#3
+#Numerical summary
+percent <- choco$Cocoa_Percent
+sort(percent)
+
+ratefour <- choco$Chocoa_Percent[choco$Rating == '4']
+ratethree <- choco$Chocoa_Percent[choco$Rating == '3']
+ratetwo <- choco$Chocoa_Percent[choco$Rating == '2']
+rateone <- choco$Chocoa_Percent[choco$Rating == '1']
+mean(ratefour)
+mean(ratethree)
+mean(ratetwo)
+mean(rateone)
+
+#Visual plot showing rating v chocoa percent
+plot(choco$Rating, choco$Chocoa_Percent)
+
+
+#4
+#Finding the mean rating of certain characteristics and comparing
+cocoa <- choco$Rating[choco$Characteristics1 == 'cocoa']
+fruity <- choco$Rating[choco$Characteristics1 == 'fruity']
+sweet <- choco$Rating[choco$Characteristics1 == 'sweet']
+sandy <- choco$Rating[choco$Characteristics1 == 'sandy']
+spicy <- choco$Rating[choco$Characteristics1 == 'spicy']
+
+meanspicy <- mean(spicy)
+meansandy <- mean(sandy)
+meansweet <- mean(sweet)
+meanfruity <- mean(fruity)
+meancocoa <- mean(cocoa)
+
+#Mean ratings of a few characteristics
+meanspicy
+meansandy
+meansweet
+meanfruity
+meancocoa
+#The highest mean rating was for Cocoa and the lowest for sweet but they were not too far off.
+
+#A barplot of the mean ratings of a few characteristics
+#The bars on the bar plot don't look very different. They are all relatively close in height.
+means <- c(meanspicy, meansandy, meansweet, meanfruity, meancocoa)
+names(means) <- c('Spicy', 'Sandy', 'Sweet', 'Fruity', 'Cocoa')
+barplot(means)
+
+#5
+#Looking at ratings by company
+AMorin <- choco$Rating[choco$Company == 'A. Morin']
+Amano <- choco$Rating[choco$Company == 'Amano']
+Amedei <- choco$Rating[choco$Company == 'Amedei']
+Arete <- choco$Rating[choco$Company == 'Arete']
+
+meanAMorin <- mean(AMorin)
+meanAmano <- mean(Amano)
+meanAmedei <- mean(Amedei)
+meanArete <- mean(Arete)
+
+#Mean ratings of a few companies
+#The mean was highest for Arete and lowest for Amedei. Arete chocolate is typically slightly more liked than Amedei.
+meanAMorin
+meanAmano
+meanAmedei
+meanArete
+
+#A barplot of the mean ratings of a few different companies to compare
+#The bars are at similar heights for these four companies. There is a small difference in their average ratings.
+means2 <- c(meanAMorin, meanAmano, meanAmedei, meanArete)
+names(means2) <- c('AMorin', 'Amano', 'Amedei', 'Arete')
+barplot(means2)
+```
+
