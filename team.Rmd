@@ -82,12 +82,40 @@ avgEarthy1
 avgFatty1
 avgDry1
 
+#More characteristic averages to compare
+cocoa <- choco$Rating[choco$Characteristics1 == 'cocoa']
+fruity <- choco$Rating[choco$Characteristics1 == 'fruity']
+sweet <- choco$Rating[choco$Characteristics1 == 'sweet']
+sandy <- choco$Rating[choco$Characteristics1 == 'sandy']
+spicy <- choco$Rating[choco$Characteristics1 == 'spicy']
+
+meanspicy <- mean(spicy)
+meansandy <- mean(sandy)
+meansweet <- mean(sweet)
+meanfruity <- mean(fruity)
+meancocoa <- mean(cocoa)
+
+meanspicy
+meansandy
+meansweet
+meanfruity
+meancocoa
+#The highest mean rating was for Cocoa and the lowest for sweet but they were not too far off.
+
+
 #Graphical Summary showing avg rating for select characteristics
 averages <- c(avgRich1, avgSweet1, avgCreamy1, avgEarthy1, avgFatty1, avgDry1)
 names(averages) <- c('Rich', 'Sweet', 'Creamy', 'Earthy', 'Fatty', 'Dry')
 barplot(averages)
 
 # Creamy and Rich seem to be the most favorable while sweet, earthy, fatty, and dry seem to be less favorable.
+
+#Barplot for second group of charactertics
+means <- c(meanspicy, meansandy, meansweet, meanfruity, meancocoa)
+names(means) <- c('Spicy', 'Sandy', 'Sweet', 'Fruity', 'Cocoa')
+barplot(means)
+#The bars on the bar plot don't look very different. They are all relatively close in height.
+
 ```
 
 
