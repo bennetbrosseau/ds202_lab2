@@ -1,0 +1,125 @@
+---
+title: "Individual1"
+output: html_document
+---
+
+## Reading in the data
+```{r}
+choco <- read.csv("https://raw.githubusercontent.com/xdaiISU/ds202materials/master/hwlabs/data/choco.csv") 
+str(choco)
+```
+
+## Question 2
+```{r}
+# The Histogram
+hist(choco$Rating)
+# The Boxplot
+boxplot(choco$Rating)
+```
+
+
+
+
+## Question 2
+```{r}
+barplot(table(choco$Date))
+```
+
+
+
+
+## Question 3
+```{r}
+#Graphical Summary
+plot(choco$Rating, choco$Cocoa_Percent)
+
+#Numerical Summary
+fourchoco <- choco$Cocoa_Percent[choco$Rating == '4']
+threechoco <- choco$Cocoa_Percent[choco$Rating == '3']
+twochoco <- choco$Cocoa_Percent[choco$Rating == '2']
+onechoco <- choco$Cocoa_Percent[choco$Rating == '1']
+mean(fourchoco)
+mean(threechoco)
+mean(twochoco)
+mean(onechoco)
+```
+
+
+
+## Question 4
+
+```{r}
+
+#Numerical Summary
+
+#characteristics1
+rich <- choco$Rating[choco$Characteristics1 == 'rich']
+sweet <- choco$Rating[choco$Characteristics1 == 'sweet']
+creamy <- choco$Rating[choco$Characteristics1 == 'creamy']
+earthy <- choco$Rating[choco$Characteristics1 == 'earthy']
+fatty <- choco$Rating[choco$Characteristics1 == 'fatty']
+dry <- choco$Rating[choco$Characteristics1 == 'dry']
+
+#avg for characteristics1
+avgRich1 <- mean(rich)
+avgSweet1 <- mean(sweet)
+avgCreamy1 <- mean(creamy)
+avgEarthy1 <- mean(earthy)
+avgFatty1 <- mean(fatty)
+avgDry1 <- mean(dry)
+
+
+avgRich1
+avgSweet1
+avgCreamy1
+avgEarthy1
+avgFatty1
+avgDry1
+
+#Graphical Summary showing avg rating for select characteristics
+averages <- c(avgRich1, avgSweet1, avgCreamy1, avgEarthy1, avgFatty1, avgDry1)
+names(averages) <- c('Rich', 'Sweet', 'Creamy', 'Earthy', 'Fatty', 'Dry')
+barplot(averages)
+
+```
+
+
+
+
+## Question 5 - My analysis on the relation of location and rating
+
+```{r}
+france <- choco$Rating[choco$Location == 'France']
+usa <- choco$Rating[choco$Location == 'U.S.A.']
+brazil <- choco$Rating[choco$Location == 'Brazil']
+denmark <- choco$Rating[choco$Location == 'Denmark']
+ecuador <- choco$Rating[choco$Location == 'Ecuador']
+australia <- choco$Rating[choco$Location == 'Australia']
+germany <- choco$Rating[choco$Location == 'Germany']
+peru <- choco$Rating[choco$Location == 'Peru']
+argentina <- choco$Rating[choco$Location == 'Argentina']
+italy <- choco$Rating[choco$Location == 'Italy']
+
+avgfrance <- mean(france)
+avgusa <- mean(usa)
+avgbrazil <- mean(brazil)
+avgdenmark <- mean(denmark)
+avgecuador <- mean(ecuador)
+avgaustralia <- mean(australia)
+avggermany <- mean(germany)
+avgperu <- mean(peru)
+avgargentina <- mean(argentina)
+avgitaly <- mean(italy)
+
+avgloc <- c(avgfrance, avgusa, avgbrazil, avgdenmark, avgecuador,avgaustralia,
+            avggermany, avgperu, avgargentina, avgitaly)
+names(avgloc) <- c('France', 'USA', 'Brazil', 'Denmark', 'Ecuador', 'Australia',
+                   'Germany', 'Peru', 'Argentina', 'Italy')
+barplot(avgloc, xlab = 'country', ylab = 'rating')
+
+
+
+
+
+```
+
