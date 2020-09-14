@@ -140,4 +140,28 @@ barplot(avgloc, xlab = 'country', ylab = 'rating')
 
 #Australia, Denmark, and Argentina had the highest avg rating of the selected countries. Ecuador and Peru had the lowest ratings of the selected countries.
 
+#Second analysis
+#Looking at ratings by company
+AMorin <- choco$Rating[choco$Company == 'A. Morin']
+Amano <- choco$Rating[choco$Company == 'Amano']
+Amedei <- choco$Rating[choco$Company == 'Amedei']
+Arete <- choco$Rating[choco$Company == 'Arete']
+
+meanAMorin <- mean(AMorin)
+meanAmano <- mean(Amano)
+meanAmedei <- mean(Amedei)
+meanArete <- mean(Arete)
+
+#Mean ratings of a few companies
+#The mean was highest for Arete and lowest for Amedei. Arete chocolate is typically slightly more liked than Amedei.
+meanAMorin
+meanAmano
+meanAmedei
+meanArete
+
+#A barplot of the mean ratings of a few different companies to compare
+#The bars are at similar heights for these four companies. There is a small difference in their average ratings.
+means2 <- c(meanAMorin, meanAmano, meanAmedei, meanArete)
+names(means2) <- c('AMorin', 'Amano', 'Amedei', 'Arete')
+barplot(means2)
 ```
